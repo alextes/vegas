@@ -18,7 +18,12 @@ type RandomGenerators = {
 };
 
 /* Implementations for random generator functions */
-const randomInt_ = (genFloat: () => number, min: number, max: number) => {
+
+const randomInt_ = (
+  genFloat: () => number,
+  min: number,
+  max: number,
+): number => {
   if (
     min !== parseInt(String(min), 10) || max !== parseInt(String(max), 10)
   ) {
