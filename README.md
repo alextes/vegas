@@ -16,7 +16,9 @@
   </a>
 </p>
 
-Sometimes you need a random number, index, or even a set of elements from a list. Vegas can help. This library takes inspiration from Python's [random](https://docs.python.org/3/library/random.html) library.
+Sometimes you need a random number, index, or even a set of elements from a
+list. Vegas can help. This library takes inspiration from Python's
+[random](https://docs.python.org/3/library/random.html) library.
 
 ## Usage
 
@@ -36,7 +38,7 @@ randomInt(2, 8);
 randomBelow(4);
 
 // pick a random element from a list.
-randomPick([1,2,3]);
+randomPick([1, 2, 3]);
 
 // pick a sample of two elements from a list.
 randomSample([1, 2, 3, 4], 2);
@@ -51,3 +53,4 @@ vegas.randomInt(2, 32);
 // initializes all random generators with a custom random number generator.
 const vegasCustom = makeGenerators(Math.random);
 vegasCustom.randomInt(0, 10);
+```
