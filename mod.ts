@@ -6,7 +6,6 @@
 
 // @deno-types="./seedrandom.d.ts"
 import seedrandom from "https://jspm.dev/seedrandom";
-import { range } from "https://deno.land/x/it_range@v1.0.2/mod.ts";
 
 /* Implementations for random generator functions */
 
@@ -52,7 +51,7 @@ const randomSample_ = <A>(
   if (population.length <= 21 + (sampleSize * 3)) {
     const sampled = [];
     const source = [...population];
-    for (const i of range(sampleSize)) {
+    for (let i = 0; i < sampleSize; i++) {
       // We continously pick from a smaller set of the population. Decreasing
       // the right bound.
       const randomIndex = randomBelow_(genFloat, population.length - i);
@@ -74,7 +73,7 @@ const randomSample_ = <A>(
 
   const sampled = [];
   const selected = new Set();
-  for (const _ of range(sampleSize)) {
+  for (let i = 0; i < sampleSize; i++) {
     let randomIndex = randomBelow_(genFloat, population.length);
 
     while (selected.has(randomIndex)) {
