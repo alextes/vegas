@@ -11,7 +11,7 @@
   <a href="https://github.com/cryptogohan/vegas/releases">
     <img src="https://img.shields.io/github/v/tag/cryptogohan/vegas?label=version">
   </a>
-  <a href="https://doc.deno.land/https/deno.land/x/vegas@1.0.0/mod.ts">
+  <a href="https://doc.deno.land/https/deno.land/x/vegas/mod.ts">
     <img src="https://img.shields.io/badge/%E2%80%8E-docs-blue.svg?logo=deno">
   </a>
 </p>
