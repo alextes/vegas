@@ -2,7 +2,7 @@
 <!-- <img src="https://raw.githubusercontent.com/cryptogohan/vegas/master/media/vegas-logo.svg" width="200"> -->
 
 <h1 align="center">Vegas</h1>
-<p align="center">Generate random numbers, samples, and more.</p>
+<p align="center">Generate random numbers and samples.</p>
 </p>
 <p align="center">
   <a href="https://github.com/cryptogohan/vegas/actions?query=workflow%3Atests">
@@ -16,8 +16,9 @@
   </a>
 </p>
 
-Sometimes you need a random number, index, or even a set of elements from a
-list. Vegas can help. This library takes inspiration from Python's
+Vegas helps do things based on randomness. For example picking a random integer,
+picking a random element from a list, or even collecting a unique sample of
+elements from a list. This library takes inspiration from Python's
 [random](https://docs.python.org/3/library/random.html) library.
 
 ## Usage
@@ -29,6 +30,11 @@ console.log(randomInt(0, 4)); // 2
 ```
 
 ## API
+
+Below are examples for all currently available APIs. Except for the
+`makeGenerators` and `makeSeededGenerators` functions, all functions draw
+randomness from `Math.random`. Use the aforementioned functions to draw
+randomness from a different source.
 
 ```ts
 // int from and including two, up to and excluding eight.
