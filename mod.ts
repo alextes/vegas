@@ -1,3 +1,9 @@
+/**
+ * Vegas
+ * @module vegas
+ * This module is browser compatible.
+ */
+
 // @deno-types="./seedrandom.d.ts"
 import seedrandom from "https://jspm.dev/seedrandom";
 import { range } from "https://deno.land/x/it_range@v1.0.2/mod.ts";
