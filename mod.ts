@@ -8,22 +8,6 @@
 import seedrandom from "https://jspm.dev/seedrandom";
 import { range } from "https://deno.land/x/it_range@v1.0.2/mod.ts";
 
-/* Base types for our exported random generators. We define these as the generators are exported multiple times. */
-
-type RandomInt = (min: number, max: number) => number;
-type RandomPick = <A>(list: A[]) => A;
-type RandomBelow = (exclusiveUpperBound: number) => number;
-type RandomFloat = () => number;
-type RandomSample = <A>(list: A[], sampleSize: number) => A[];
-
-type RandomGenerators = {
-  randomInt: RandomInt;
-  randomPick: RandomPick;
-  randomBelow: RandomBelow;
-  randomFloat: RandomFloat;
-  randomSample: RandomSample;
-};
-
 /* Implementations for random generator functions */
 
 const randomInt_ = (
@@ -103,24 +87,32 @@ const randomSample_ = <A>(
 };
 
 /* Simplified exports of the random generator functions */
-export const randomInt: RandomInt = (min, max) =>
+export const randomInt = (min: number, max: number): number =>
   randomInt_(Math.random, min, max);
 
 /** Picks a random element from a list */
-export const randomPick: RandomPick = (list) => randomPick_(Math.random, list);
+export const randomPick = <A>(list: A[]): A => randomPick_(Math.random, list);
 
 /** Generates an integer below the given bound and above but including 0.  */
-export const randomBelow: RandomBelow = (exclusiveUpperBound) =>
+export const randomBelow = (exclusiveUpperBound: number) =>
   randomBelow_(Math.random, exclusiveUpperBound);
 
 /** Generates a random number between 0 (inclusive) and 1 (exclusive).  */
-export const randomFloat: RandomFloat = () => randomFloat_(Math.random);
+export const randomFloat = () => randomFloat_(Math.random);
 
 /** Builds a list of elements, of a given size, from a given list. */
-export const randomSample: RandomSample = (list, sampleSize) =>
+export const randomSample = <A>(list: A[], sampleSize: number) =>
   randomSample_(Math.random, list, sampleSize);
 
 /* Exports for seeded scenarios */
+// We have these to ensure makeGenerators and makeSeededGenerators are exporting the same thing.
+type RandomGenerators = {
+  randomInt: (min: number, max: number) => number;
+  randomPick: <A>(list: A[]) => A;
+  randomBelow: (exclusiveUpperBound: number) => number;
+  randomFloat: () => number;
+  randomSample: <A>(list: A[], sampleSize: number) => A[];
+};
 
 /** Makes a set of generators based on a provided random number generator. */
 export const makeGenerators = (
