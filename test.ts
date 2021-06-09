@@ -28,5 +28,10 @@ Deno.test("generate random float", () => {
 });
 
 Deno.test("pick random sample", () => {
-  assertEquals(vegas.randomSample([1, 2, 3, 4], 2), [4, 1]);
+  const nums = Array(40).fill(0).map((_) => vegas.randomInt(1, 9));
+  assertEquals(vegas.randomSample(nums, 2), [1, 2]);
+});
+
+Deno.test("pick random large sample", () => {
+  assertEquals(vegas.randomSample([5, 8, 4, 8, 5], 3), [5, 8, 8]);
 });
