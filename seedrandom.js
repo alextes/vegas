@@ -1,5 +1,4 @@
 // deno-lint-ignore-file
-// deno-fmt-ignore
 /*
 Copyright 2019 David Bau.
 
@@ -98,6 +97,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       function (prng, seed, is_math_call, state) {
         if (state) {
           // Load the arc4 state from the given state if it has an S array.
+          // deno-fmt-ignore
           if (state.S)copy(state, arc4);
           // Only provide the .state method if requested via options.state.
           prng.state = function () {
@@ -140,6 +140,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       s = me.S = [];
 
     // The empty key [] is treated as [0].
+    // deno-fmt-ignore
     if (!keylen)key = [keylen++];
 
     // Set up S using the standard key scheduling algorithm.
@@ -177,7 +178,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     t.j = f.j;
     t.S = f.S.slice();
     return t;
-  }//
+    // deno-fmt-ignore
+  } //
   // flatten()
   // Converts an object tree to nested arrays of strings.
   //
