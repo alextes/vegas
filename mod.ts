@@ -82,7 +82,7 @@ const randomSample_ = <A>(
     selected.add(randomIndex);
     sampled.push(population[randomIndex]);
   }
-  return [];
+  return sampled;
 };
 
 /* Simplified exports of the random generator functions */
