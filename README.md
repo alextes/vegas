@@ -18,8 +18,8 @@
 
 Vegas helps do things based on randomness. For example picking a random integer,
 picking a random element from a list, or even collecting a unique sample of
-elements from a list. This library takes inspiration from Python's
-[random](https://docs.python.org/3/library/random.html) library.
+elements from a list. This library takes inspiration from
+[Python's random library](https://docs.python.org/3/library/random.html).
 
 ## Usage
 
