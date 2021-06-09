@@ -2,7 +2,8 @@
 import seedrandom from "https://jspm.dev/seedrandom";
 import { range } from "https://deno.land/x/it_range@v1.0.2/mod.ts";
 
-/* Types for our generators */
+/* Base types for our exported random generators. We define these as the generators are exported multiple times. */
+
 type RandomInt = (min: number, max: number) => number;
 type RandomPick = <A>(list: A[]) => A;
 type RandomBelow = (exclusiveUpperBound: number) => number;
@@ -95,38 +96,27 @@ const randomSample_ = <A>(
   return [];
 };
 
-/* Simplified random generators */
+/* Simplified exports of the random generator functions */
 export const randomInt: RandomInt = (min, max) =>
   randomInt_(Math.random, min, max);
 
-/**
- * Returns a random element from a list
- */
+/** Picks a random element from a list */
 export const randomPick: RandomPick = (list) => randomPick_(Math.random, list);
 
-/**
- * Returns an integer below the given bound and above but including 0.
- */
+/** Generates an integer below the given bound and above but including 0.  */
 export const randomBelow: RandomBelow = (exclusiveUpperBound) =>
   randomBelow_(Math.random, exclusiveUpperBound);
 
-/**
- * Returns a random number between 0 (inclusive) and 1 (exclusive).
- */
+/** Generates a random number between 0 (inclusive) and 1 (exclusive).  */
 export const randomFloat: RandomFloat = () => randomFloat_(Math.random);
 
-/**
- * Returns a set of unique elements chosen from the provided list.
- * @param {number} the size of the resulting list
- */
+/** Builds a list of elements, of a given size, from a given list. */
 export const randomSample: RandomSample = (list, sampleSize) =>
   randomSample_(Math.random, list, sampleSize);
 
 /* Exports for seeded scenarios */
 
-/**
- * Returns generators based on a provided random number generator function.
- */
+/** Makes a set of generators based on a provided random number generator. */
 export const makeGenerators = (
   genFloat: () => number = Math.random,
 ): RandomGenerators => ({
@@ -139,8 +129,6 @@ export const makeGenerators = (
     randomSample_(genFloat, list, sampleSize),
 });
 
-/**
- * Returns generators based on a provided seed.
- */
+/** Makes a set of generators based on a provided seed string */
 export const makeSeededGenerators = (seed: string): RandomGenerators =>
   makeGenerators(seedrandom(String(seed)));
