@@ -41,47 +41,38 @@ const randomSample_ = <A>(
   population: A[],
   sampleSize: number,
 ): A[] => {
-  // We have two methods for collecting a random sample. The default picks a
-  // random index and checks that it hasn't been picked already. If it has, it
-  // tries again. For samples where the sample size is large relative to the
-  // list size, picking from a pool ensures we never pick the same random
-  // element twice, will be more efficient. This number is quite arbitrary at
-  // the moment. In Python `popSize <= 21 + 4 ** ceil(log(sampleSize * 3, 4))`
-  // is used. A PR for a smart way of picking this number is welcome.
-  if (population.length <= 21 + (sampleSize * 3)) {
-    const sampled = [];
-    const source = [...population];
-    for (let i = 0; i < sampleSize; i++) {
-      // We continously pick from a smaller set of the population. Decreasing
-      // the right bound.
-      const randomIndex = randomBelow_(genFloat, population.length - i);
-      // Pick a random element from our source list
-      sampled[i] = source[randomIndex];
-      // Replace the element we just picked with the element that wasn't but will be out-of-bounds next iteration.
-      // The magic of this method happens here. Each iteration we replace the
-      // element we just picked from our source pool, with the right-most
-      // element. Next iteration we move our right-bound left by one, thus not
-      // reconsidering picked elements. To create a complete sample we have to
-      // walk the source list at most once.
-      // When picking the right most element, we can skip this line, but it
-      // effectively does nothing anyway.
-      source[randomIndex] = source[population.length - i - 1];
-    }
-
-    return sampled;
-  }
-
+  // We use a relatively smart method of picking samples. We copy the
+  // population into source pool and grab every element in the pool at most
+  // once through some clever moving of elements and bounds. A simpler method
+  // is to just pick a random element and try again if the element was picked
+  // already. The dumb method is fast enough for small lists, and cases where
+  // chances of picking the same element twice are low. e.g. a sample of five,
+  // out of a list of a thousand. However, as chances of collisions increase,
+  // the simple method gets slow. e.g. picking nine-hundred-ninety-nine out of
+  // a list of a thousand. Therefore we keep to the smart method, knowing we
+  // pay a small cost that could sometimes be avoided. In Python the method is
+  // chosen based on the following condition `popSize <= 21 + 4 **
+  // ceil(log(sampleSize * 3)/log(4))` is used. A PR for a smart way of making
+  // this decision based on JS performance is welcome.
   const sampled = [];
-  const selected = new Set();
+  const source = [...population];
   for (let i = 0; i < sampleSize; i++) {
-    let randomIndex = randomBelow_(genFloat, population.length);
-
-    while (selected.has(randomIndex)) {
-      randomIndex = randomBelow_(genFloat, population.length);
-    }
-    selected.add(randomIndex);
-    sampled.push(population[randomIndex]);
+    // Every iteration we pick from a smaller set of the population. Decreasing
+    // the right bound.
+    const randomIndex = randomBelow_(genFloat, population.length - i);
+    // Pick a random element from our source list
+    sampled[i] = source[randomIndex];
+    // Replace the element we just picked with the element that wasn't but
+    // will be out-of-bounds next iteration. The magic of this method happens
+    // here. Each iteration we replace the element we just picked from our
+    // source pool, with the right-most element. Next iteration we move our
+    // right-bound left by one, thus not reconsidering picked elements. To
+    // create a complete sample we have to walk the source list at most once.
+    // When picking the right most element, we can skip this line, but it
+    // effectively does nothing anyway.
+    source[randomIndex] = source[population.length - i - 1];
   }
+
   return sampled;
 };
 
