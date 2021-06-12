@@ -26,4 +26,13 @@ jobs:
         run: deno lint
 
       - name: Run tests
-        run: deno test -A --unstable
+        run: deno test --unstable --coverage=./cov
+        
+      - name: generate lcov
+        run: deno coverage --unstable --lcov ./cov > cov.lcov
+
+      - name: upload coverage
+        if: matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@v1
+        with:
+          files: cov.lcov
