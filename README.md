@@ -5,7 +5,7 @@
 <p align="center">Generate random numbers and samples.</p>
 </p>
 <p align="center">
-  <a href="https://github.com/cryptogohan/vegas/actions?query=workflow%3Atests">
+  <a href="https://github.com/cryptogohan/vegas/actions/workflows/tests.yml">
     <img src="https://github.com/cryptogohan/vegas/workflows/tests/badge.svg">
   </a>
   <a href="https://github.com/cryptogohan/vegas/releases">
