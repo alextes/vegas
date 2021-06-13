@@ -7,6 +7,8 @@
 // @deno-types="./seedrandom.d.ts"
 import seedrandom from "https://jspm.dev/seedrandom";
 
+const nth = <A>(index: number, list: A[]): A => list[index];
+
 /* Implementations for random generator functions */
 
 const randomInt_ = (
@@ -16,10 +18,8 @@ const randomInt_ = (
   //The maximum is exclusive and the minimum is inclusive
 ): number => Math.floor(genFloat() * (max - min)) + min;
 
-const randomPick_ = <A>(genFloat: () => number, list: A[]): A => {
-  const randomIndex = randomInt_(genFloat, 0, list.length);
-  return list[randomIndex];
-};
+const randomPick_ = <A>(genFloat: () => number, list: A[]): A =>
+  nth(randomInt_(genFloat, 0, list.length), list);
 
 const randomBelow_ = (
   genFloat: () => number,
