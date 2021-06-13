@@ -13,16 +13,8 @@ const randomInt_ = (
   genFloat: () => number,
   min: number,
   max: number,
-): number => {
-  if (
-    min !== parseInt(String(min), 10) || max !== parseInt(String(max), 10)
-  ) {
-    throw new Error("min and max should be integers");
-  }
-
   //The maximum is exclusive and the minimum is inclusive
-  return Math.floor(genFloat() * (max - min)) + min;
-};
+): number => Math.floor(genFloat() * (max - min)) + min;
 
 const randomPick_ = <A>(genFloat: () => number, list: A[]): A => {
   const randomIndex = randomInt_(genFloat, 0, list.length);
