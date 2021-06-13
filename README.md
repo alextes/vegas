@@ -17,6 +17,8 @@
   <a href="https://doc.deno.land/https/deno.land/x/vegas/mod.ts">
     <img src="https://img.shields.io/badge/%E2%80%8E-docs-blue.svg?logo=deno">
   </a>
+  <img alt="dependency count" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fvegas%2Fmod.ts">
+  <img alt="dependencies up-to-date" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fupdates%2Fhttps%2Fdeno.land%2Fx%2Fvegas%2Fmod.ts">
 </p>
 
 Vegas helps do things based on randomness. For example picking a random integer,
