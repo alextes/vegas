@@ -8,6 +8,9 @@
   <a href="https://github.com/cryptogohan/vegas/actions/workflows/tests.yml">
     <img src="https://github.com/cryptogohan/vegas/workflows/tests/badge.svg">
   </a>
+  <a href="https://codecov.io/gh/cryptogohan/vegas">
+    <img src="https://codecov.io/gh/cryptogohan/vegas/branch/main/graph/badge.svg?token=TW4QNAKP7U"/>
+  </a>
   <a href="https://github.com/cryptogohan/vegas/releases">
     <img src="https://img.shields.io/github/v/tag/cryptogohan/vegas?label=version">
   </a>
