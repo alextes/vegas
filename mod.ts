@@ -26,8 +26,6 @@ const randomBelow_ = (
   exclusiveUpperBound: number,
 ): number => randomInt_(genFloat, 0, exclusiveUpperBound);
 
-const randomFloat_ = (genFloat: () => number): number => genFloat();
-
 const randomSample_ = <A>(
   genFloat: () => number,
   population: A[],
@@ -80,7 +78,7 @@ export const randomBelow = (exclusiveUpperBound: number) =>
   randomBelow_(Math.random, exclusiveUpperBound);
 
 /** Generates a random number between 0 (inclusive) and 1 (exclusive).  */
-export const randomFloat = () => randomFloat_(Math.random);
+export const randomFloat = Math.random;
 
 /** Builds a list of elements, of a given size, from a given list. */
 export const randomSample = <A>(list: A[], sampleSize: number) =>
@@ -104,7 +102,7 @@ export const makeGenerators = (
   randomPick: <A>(list: A[]): A => randomPick_(genFloat, list),
   randomBelow: (exclusiveUpperBound: number) =>
     randomBelow_(genFloat, exclusiveUpperBound),
-  randomFloat: () => randomFloat_(genFloat),
+  randomFloat: genFloat,
   randomSample: <A>(list: A[], sampleSize: number) =>
     randomSample_(genFloat, list, sampleSize),
 });
