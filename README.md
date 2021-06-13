@@ -5,17 +5,17 @@
 <p align="center">Generate random numbers and samples.</p>
 </p>
 <p align="center">
-  <a href="https://github.com/cryptogohan/vegas/actions/workflows/tests.yml">
-    <img src="https://github.com/cryptogohan/vegas/workflows/tests/badge.svg">
-  </a>
-  <a href="https://codecov.io/gh/cryptogohan/vegas">
-    <img src="https://codecov.io/gh/cryptogohan/vegas/branch/main/graph/badge.svg?token=TW4QNAKP7U"/>
-  </a>
   <a href="https://github.com/cryptogohan/vegas/releases">
     <img src="https://img.shields.io/github/v/tag/cryptogohan/vegas?label=version">
   </a>
+  <a href="https://github.com/cryptogohan/vegas/actions/workflows/tests.yml">
+    <img src="https://github.com/cryptogohan/vegas/workflows/tests/badge.svg">
+  </a>
   <a href="https://doc.deno.land/https/deno.land/x/vegas/mod.ts">
     <img src="https://img.shields.io/badge/%E2%80%8E-docs-blue.svg?logo=deno">
+  </a>
+  <a href="https://codecov.io/gh/cryptogohan/vegas">
+    <img src="https://codecov.io/gh/cryptogohan/vegas/branch/main/graph/badge.svg?token=TW4QNAKP7U"/>
   </a>
   <img alt="dependency count" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fdep-count%2Fhttps%2Fdeno.land%2Fx%2Fvegas%2Fmod.ts">
   <img alt="dependencies up-to-date" src="https://img.shields.io/endpoint?url=https%3A%2F%2Fdeno-visualizer.danopia.net%2Fshields%2Fupdates%2Fhttps%2Fdeno.land%2Fx%2Fvegas%2Fmod.ts">
