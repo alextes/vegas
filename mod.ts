@@ -86,7 +86,7 @@ export const randomSample = <A>(list: A[], sampleSize: number) =>
 
 /* Exports for seeded scenarios */
 // We have these to ensure makeGenerators and makeSeededGenerators are exporting the same thing.
-type RandomGenerators = {
+export type RandomGenerators = {
   randomInt: (min: number, max: number) => number;
   randomPick: <A>(list: A[]) => A;
   randomBelow: (exclusiveUpperBound: number) => number;
